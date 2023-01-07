@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eyadm\\source\\repos\\Product\\Product.api\\Product.api.csproj": {}
+    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Product.api\\Product.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eyadm\\source\\repos\\Product\\Product.api\\Product.api.csproj": {
+    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Product.api\\Product.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eyadm\\source\\repos\\Product\\Product.api\\Product.api.csproj",
+        "projectUniqueName": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Product.api\\Product.api.csproj",
         "projectName": "Product.api",
-        "projectPath": "C:\\Users\\eyadm\\source\\repos\\Product\\Product.api\\Product.api.csproj",
+        "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Product.api\\Product.api.csproj",
         "packagesPath": "C:\\Users\\eyadm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eyadm\\source\\repos\\Product\\Product.api\\obj\\",
+        "outputPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Product.api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -34,11 +34,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\eyadm\\source\\repos\\Product\\product.buisness\\product.buisness.csproj": {
-                "projectPath": "C:\\Users\\eyadm\\source\\repos\\Product\\product.buisness\\product.buisness.csproj"
+              "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj": {
+                "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj"
               },
-              "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj": {
-                "projectPath": "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj"
+              "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj": {
+                "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj"
               }
             }
           }
@@ -94,14 +94,14 @@
         }
       }
     },
-    "C:\\Users\\eyadm\\source\\repos\\Product\\product.buisness\\product.buisness.csproj": {
+    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eyadm\\source\\repos\\Product\\product.buisness\\product.buisness.csproj",
+        "projectUniqueName": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj",
         "projectName": "product.buisness",
-        "projectPath": "C:\\Users\\eyadm\\source\\repos\\Product\\product.buisness\\product.buisness.csproj",
+        "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj",
         "packagesPath": "C:\\Users\\eyadm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eyadm\\source\\repos\\Product\\product.buisness\\obj\\",
+        "outputPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -124,8 +124,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj": {
-                "projectPath": "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj"
+              "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj": {
+                "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj"
               }
             }
           }
@@ -170,14 +170,14 @@
         }
       }
     },
-    "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj": {
+    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj",
+        "projectUniqueName": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj",
         "projectName": "Product.Database",
-        "projectPath": "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj",
+        "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj",
         "packagesPath": "C:\\Users\\eyadm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eyadm\\source\\repos\\Product\\Prouduct.Database\\obj\\",
+        "outputPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
