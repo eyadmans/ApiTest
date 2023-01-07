@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+//test comment
 namespace Product.Database.Dtos.Companies
 {
     public class CompanyDto
