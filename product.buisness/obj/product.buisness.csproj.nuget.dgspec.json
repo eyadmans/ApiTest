@@ -1,41 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj": {}
+    "C:\\Users\\ragha\\source\\repos\\Product\\product.buisness\\product.buisness.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj": {
+    "C:\\Users\\ragha\\source\\repos\\Product\\product.buisness\\product.buisness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj",
+        "projectUniqueName": "C:\\Users\\ragha\\source\\repos\\Product\\product.buisness\\product.buisness.csproj",
         "projectName": "product.buisness",
-        "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\product.buisness.csproj",
-        "packagesPath": "C:\\Users\\eyadm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\product.buisness\\obj\\",
+        "projectPath": "C:\\Users\\ragha\\source\\repos\\Product\\product.buisness\\product.buisness.csproj",
+        "packagesPath": "C:\\Users\\ragha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ragha\\source\\repos\\Product\\product.buisness\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\eyadm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ragha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\eyadm\\OneDrive\\Masaüstü\\offline Packages": {},
+          "C:\\Users\\ragha\\OneDrive\\Desktop\\offline packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj": {
-                "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj"
+              "C:\\Users\\ragha\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj": {
+                "projectPath": "C:\\Users\\ragha\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj"
               }
             }
           }
@@ -71,39 +66,48 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj": {
+    "C:\\Users\\ragha\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj",
+        "projectUniqueName": "C:\\Users\\ragha\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj",
         "projectName": "Product.Database",
-        "projectPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\Product.Database.csproj",
-        "packagesPath": "C:\\Users\\eyadm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eyadm\\Source\\Repos\\ApiTest\\Prouduct.Database\\obj\\",
+        "projectPath": "C:\\Users\\ragha\\source\\repos\\Product\\Prouduct.Database\\Product.Database.csproj",
+        "packagesPath": "C:\\Users\\ragha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ragha\\source\\repos\\Product\\Prouduct.Database\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\eyadm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ragha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\eyadm\\OneDrive\\Masaüstü\\offline Packages": {},
+          "C:\\Users\\ragha\\OneDrive\\Desktop\\offline packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -147,12 +151,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

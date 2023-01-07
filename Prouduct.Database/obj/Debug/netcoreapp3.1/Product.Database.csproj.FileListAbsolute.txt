@@ -10,3 +10,16 @@ C:\Users\eyadm\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Pr
 C:\Users\eyadm\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.pdb
 C:\Users\eyadm\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.genruntimeconfig.cache
 C:\Users\eyadm\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.csprojAssemblyReference.cache
+C:\Users\ragha\source\repos\Product\Prouduct.Database\bin\Debug\netcoreapp3.1\Product.Database.deps.json
+C:\Users\ragha\source\repos\Product\Prouduct.Database\bin\Debug\netcoreapp3.1\Product.Database.runtimeconfig.json
+C:\Users\ragha\source\repos\Product\Prouduct.Database\bin\Debug\netcoreapp3.1\Product.Database.runtimeconfig.dev.json
+C:\Users\ragha\source\repos\Product\Prouduct.Database\bin\Debug\netcoreapp3.1\Product.Database.dll
+C:\Users\ragha\source\repos\Product\Prouduct.Database\bin\Debug\netcoreapp3.1\Product.Database.pdb
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.csproj.AssemblyReference.cache
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.AssemblyInfoInputs.cache
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.AssemblyInfo.cs
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.csproj.CoreCompileInputs.cache
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.dll
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.pdb
+C:\Users\ragha\source\repos\Product\Prouduct.Database\obj\Debug\netcoreapp3.1\Product.Database.genruntimeconfig.cache
