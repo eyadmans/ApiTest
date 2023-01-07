@@ -7,16 +7,17 @@ namespace Product.Database.Dtos.Companies
 {
     public class CompanyDto
     {
+        private string companyName;
         public int Id { get; set; }
-        public string CompanyName 
+        public string CompanyName
         {
             get
             {
-                return CompanyName;
+                return companyName;
             }
             set 
             {
-                value = value.ToUpper();
+                companyName = value.ToUpper();
             } 
         }
         public string Description { set; get; }
