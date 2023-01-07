@@ -1,0 +1,15 @@
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\Product.Database.dll
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.csprojAssemblyReference.cache
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.AssemblyInfoInputs.cache
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.AssemblyInfo.cs
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\product.buisness.deps.json
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\product.buisness.runtimeconfig.json
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\product.buisness.runtimeconfig.dev.json
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\product.buisness.dll
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\product.buisness.pdb
+C:\Users\eyadm\source\repos\Product\product.buisness\bin\Debug\netcoreapp3.1\Product.Database.pdb
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.csproj.CoreCompileInputs.cache
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.csproj.CopyComplete
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.dll
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.pdb
+C:\Users\eyadm\source\repos\Product\product.buisness\obj\Debug\netcoreapp3.1\product.buisness.genruntimeconfig.cache
