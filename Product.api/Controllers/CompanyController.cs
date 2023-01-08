@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using product.buisness;
 using Product.Database.Dtos.Companies;
+using Product.Database.entities;
 using Product.Database.Enums;
 using Prouduct.Database.entities;
 using System;
@@ -22,7 +23,7 @@ namespace Product.api.Controllers
         }
 
         [HttpPost("product/AddCompany")]
-        public bool AddCompany(string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
+        public bool AddCompany(string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<TheCountry> branch)
         {
             var theResult = _companyservice.AddNewCompany(companyName, description, ownerName, status, sector, startDate, branch);
             return theResult;
@@ -42,13 +43,11 @@ namespace Product.api.Controllers
         {
              _companyservice.Delete (id);
         }
-        [HttpPost("product/1")]
+        [HttpPost("product/Edit")]
         public bool EditCom(int id, string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
         {
             var s= _companyservice.EditCom(id, companyName, description, ownerName, status, sector, startDate, branch);
-            return s;
-            
+            return s;      
         }
-
     }
 }

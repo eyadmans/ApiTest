@@ -1,4 +1,5 @@
-﻿using Product.Database.Enums;
+﻿using Product.Database.entities;
+using Product.Database.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,6 +17,8 @@ namespace Prouduct.Database.entities
         public bool Status { set; get; }
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
-        //public List<Country> Branch { set; get; }
+
+
+        public List<TheCountry> Branch { set; get; }
     }
 }

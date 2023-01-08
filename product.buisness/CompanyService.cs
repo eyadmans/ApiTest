@@ -1,4 +1,5 @@
 ﻿using Product.Database.Dtos.Companies;
+using Product.Database.entities;
 using Product.Database.Enums;
 using Prouduct.Database.context;
 using Prouduct.Database.entities;
@@ -18,7 +19,7 @@ namespace product.buisness
             _context = context;
         }
 
-        public bool AddNewCompany(string companyName , string description , string ownerName , bool status , Sectors sector , DateTime startDate , List<Country> branch)
+        public bool AddNewCompany(string companyName , string description , string ownerName , bool status , Sectors sector , DateTime startDate , List<TheCountry> branch)
         {
 
             DateTime a =new DateTime (2020, 1, 1);
@@ -33,7 +34,7 @@ namespace product.buisness
                     Status = status,
                     Sector = sector,
                     StartDate = startDate,
-                    //Branch = branch
+                    Branch = branch
                 });
                 _context.SaveChanges();
                 return true;
