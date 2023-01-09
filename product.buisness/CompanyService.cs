@@ -19,23 +19,29 @@ namespace product.buisness
             _context = context;
         }
 
-        public bool AddNewCompany(string companyName , string description , string ownerName , bool status , Sectors sector , DateTime startDate , List<TheCountry> branch)
+        public bool AddNewCompany(string companyName , string description , string ownerName , bool status , Sectors sector , DateTime startDate , List<Country> branchs)
         {
 
+            branchs = new List<Country> { Country.Turkey };
             DateTime a =new DateTime (2020, 1, 1);
             DateTime b = DateTime.Now;
             if (startDate >= a & startDate <= b)
             {
-                _context.Companies.Add(new Company()
+                var company = new Company()
                 {
                     CompanyName = companyName,
                     Description = description,
                     OwnerName = ownerName,
                     Status = status,
                     Sector = sector,
-                    StartDate = startDate,
-                    Branch = branch
-                });
+                    StartDate = startDate
+                };
+                foreach(var branch in branchs)
+                {
+                    company.Branchs.Add(new CompanyCountry() { Country = branch });
+                }
+
+                _context.Companies.Add(company);
                 _context.SaveChanges();
                 return true;
             }

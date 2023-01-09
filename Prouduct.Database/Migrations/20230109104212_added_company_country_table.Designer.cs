@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prouduct.Database.context;
 
 namespace Product.Database.Migrations
 {
     [DbContext(typeof(Applicationcontext))]
-    partial class ApplicationcontextModelSnapshot : ModelSnapshot
+    [Migration("20230109104212_added_company_country_table")]
+    partial class added_company_country_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

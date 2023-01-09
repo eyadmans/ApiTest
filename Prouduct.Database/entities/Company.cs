@@ -17,8 +17,8 @@ namespace Prouduct.Database.entities
         public bool Status { set; get; }
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
+        public List<CompanyCountry> Branchs { get; set; } = new List<CompanyCountry>();
 
-
-        public List<TheCountry> Branch { set; get; }
+        
     }
 }

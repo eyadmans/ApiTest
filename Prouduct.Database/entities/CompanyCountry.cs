@@ -1,4 +1,5 @@
-﻿using Prouduct.Database.entities;
+﻿using Product.Database.Enums;
+using Prouduct.Database.entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,12 +15,11 @@ namespace Product.Database.entities
         [Key]
         public int Id { set; get; }
 
-        [ForeignKey("Com")]
+        [ForeignKey("Company")]
         public int CompanyId { set; get; }
-        public Company Com { set; get; }
-
-        [ForeignKey("Cou")]
-        public int CountryId { set; get; }
-        public TheCountry Cou { set; get; }
+        public Company Company { set; get; }
+        //oreign key can only be added for database classes
+        public Country Country { set; get; }
+        //we changed database so we need migration
     }
 }

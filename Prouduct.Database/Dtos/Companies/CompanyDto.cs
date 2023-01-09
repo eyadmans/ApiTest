@@ -25,5 +25,7 @@ namespace Product.Database.Dtos.Companies
         public string Status { set; get; }
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
+
+       
     }
 }

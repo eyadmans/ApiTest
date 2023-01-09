@@ -23,9 +23,10 @@ namespace Product.api.Controllers
         }
 
         [HttpPost("product/AddCompany")]
-        public bool AddCompany(string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<TheCountry> branch)
+        public bool AddCompany(string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branchs)
         {
-            var theResult = _companyservice.AddNewCompany(companyName, description, ownerName, status, sector, startDate, branch);
+           
+            var theResult = _companyservice.AddNewCompany(companyName, description, ownerName, status, sector, startDate, branchs);
             return theResult;
         }
 
