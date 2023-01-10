@@ -1,4 +1,4 @@
-﻿using production.Database.Enums;
+﻿using production.Database.entities;
 using Prouduction.Database.entities;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace production.Database.entities
+namespace Production.Database.entities
 {
-    public class CompanyCountry
+    public class ProductCompany
     {
         [Key]
         public int Id { set; get; }
@@ -18,8 +18,10 @@ namespace production.Database.entities
         [ForeignKey("Company")]
         public int CompanyId { set; get; }
         public Company Company { set; get; }
-        //oreign key can only be added for database classes
-        public Country Country { set; get; }
-        //we changed database so we need migration
+
+
+        [ForeignKey("Product")]
+        public int ProductId { set; get; }
+        public Product Product  { set; get; }
     }
 }

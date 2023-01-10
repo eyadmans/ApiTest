@@ -10,8 +10,8 @@ using Prouduction.Database.context;
 namespace production.Database.Migrations
 {
     [DbContext(typeof(Applicationcontext))]
-    [Migration("20230109104212_added_company_country_table")]
-    partial class added_company_country_table
+    [Migration("20230109152204_addedSoftDelete")]
+    partial class addedSoftDelete
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,9 @@ namespace production.Database.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("OwnerName")
                         .HasColumnType("nvarchar(max)");

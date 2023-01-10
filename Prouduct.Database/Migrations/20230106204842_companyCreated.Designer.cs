@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Prouduct.Database.context;
+using Prouduction.Database.context;
 
-namespace Product.Database.Migrations
+namespace production.Database.Migrations
 {
     [DbContext(typeof(Applicationcontext))]
     [Migration("20230106204842_companyCreated")]

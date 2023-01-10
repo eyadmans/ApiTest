@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Database", "Prouduct.Database\Product.Database.csproj", "{A6AF0FDC-544A-4D5B-987D-AC4481738FEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Production.Database", "Prouduct.Database\Production.Database.csproj", "{A6AF0FDC-544A-4D5B-987D-AC4481738FEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "product.buisness", "product.buisness\product.buisness.csproj", "{35596D93-7580-4561-86FC-25180BE08A5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "production.buisness", "product.buisness\production.buisness.csproj", "{35596D93-7580-4561-86FC-25180BE08A5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.api", "Product.api\Product.api.csproj", "{93FD8D39-4743-40EC-A38E-66AA3EA1174F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Production.api", "Product.api\Production.api.csproj", "{93FD8D39-4743-40EC-A38E-66AA3EA1174F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\product.buisness\product.buisness.csproj" />
-    <ProjectReference Include="..\Prouduct.Database\Product.Database.csproj" />
+    <ProjectReference Include="..\product.buisness\production.buisness.csproj" />
+    <ProjectReference Include="..\Prouduct.Database\Production.Database.csproj" />
   </ItemGroup>
 
 </Project>

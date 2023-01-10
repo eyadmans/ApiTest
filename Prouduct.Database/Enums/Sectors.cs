@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Product.Database.Enums
+namespace production.Database.Enums
 {
     public enum Sectors
     {

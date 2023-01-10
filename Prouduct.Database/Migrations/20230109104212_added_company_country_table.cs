@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Product.Database.Migrations
+namespace production.Database.Migrations
 {
     public partial class added_company_country_table : Migration
     {

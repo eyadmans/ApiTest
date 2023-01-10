@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using product.buisness;
-using Product.Database.Dtos.Companies;
-using Product.Database.entities;
-using Product.Database.Enums;
-using Prouduct.Database.entities;
+using production.buisness;
+using production.Database.Dtos.Companies;
+using production.Database.entities;
+using production.Database.Enums;
+using Prouduction.Database.entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Product.api.Controllers
+namespace production.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -22,33 +22,34 @@ namespace Product.api.Controllers
             _companyservice = companyService;
         }
 
-        [HttpPost("product/AddCompany")]
-        public bool AddCompany(string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branchs)
+        [HttpPost("Product/AddCompany")]
+        public bool AddCompany(AddCompanyRequestDto companyDto)
         {
            
-            var theResult = _companyservice.AddNewCompany(companyName, description, ownerName, status, sector, startDate, branchs);
+            var theResult = _companyservice.AddNewCompany(companyDto);
             return theResult;
         }
 
-        [HttpGet("product/ViewCompanies")]
+        [HttpGet("Product/ViewCompanies")]
         public List<CompanyDto> ViewCompanies()
         {
-            Debug.WriteLine("start fun ");
-            var results = _companyservice.GetAll();
-            Debug.WriteLine("end func");
-            return results;
+            
+            return _companyservice.GetAll();
+          
+           
         }
         
-        [HttpDelete("product/DeleteCom")]
+        [HttpDelete("Product/DeleteCom")]
         public void DeleteCom(int id)
         {
              _companyservice.Delete (id);
         }
-        [HttpPost("product/Edit")]
+        [HttpPost("Product/Edit")]
         public bool EditCom(int id, string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
         {
             var s= _companyservice.EditCom(id, companyName, description, ownerName, status, sector, startDate, branch);
-            return s;      
+            return s;   
+            
         }
     }
 }

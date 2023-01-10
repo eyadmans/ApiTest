@@ -8,14 +8,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using product.buisness;
-using Prouduct.Database.context;
+using production.buisness;
+using Prouduction.Database.context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Product.api
+namespace production.api
 {
     public class Startup
     {
@@ -33,6 +33,7 @@ namespace Product.api
             services.AddDbContext<Applicationcontext>(optionsAction: options =>
              options.UseSqlServer(Configuration.GetConnectionString(name: "ApplicationConnection")));
             services.AddScoped<CompanyService>();
+            services.AddScoped<ProductService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
