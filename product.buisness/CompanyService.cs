@@ -1,13 +1,14 @@
-﻿using Product.Database.Dtos.Companies;
-using Product.Database.Enums;
-using Prouduct.Database.context;
-using Prouduct.Database.entities;
+﻿using production.Database.Dtos.Companies;
+using production.Database.entities;
+using production.Database.Enums;
+using Prouduction.Database.context;
+using Prouduction.Database.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace product.buisness
+namespace production.buisness
 {
     public class CompanyService
     {
@@ -18,23 +19,31 @@ namespace product.buisness
             _context = context;
         }
 
-        public bool AddNewCompany(string companyName , string description , string ownerName , bool status , Sectors sector , DateTime startDate , List<Country> branch)
+        public bool AddNewCompany(AddCompanyRequestDto companyDto)
         {
-
+            //first of all. as we used dto to send data to user. we need to use it to take data from user.
+            
             DateTime a =new DateTime (2020, 1, 1);
             DateTime b = DateTime.Now;
-            if (startDate >= a & startDate <= b)
+            if (companyDto.StartDate >= a & companyDto.StartDate <= b)
             {
-                _context.Companies.Add(new Company()
+                var company = new Company()
                 {
-                    CompanyName = companyName,
-                    Description = description,
-                    OwnerName = ownerName,
-                    Status = status,
-                    Sector = sector,
-                    StartDate = startDate,
-                    //Branch = branch
-                });
+                    CompanyName = companyDto.CompanyName,
+                    Description = companyDto.Description,
+                    OwnerName = companyDto.OwnerName,
+                    Status = companyDto.Status,
+                    Sector = companyDto.Sector,
+                    StartDate = companyDto.StartDate,
+                    IsDeleted = false
+                };
+                _context.Companies.Add(company);
+                _context.SaveChanges();
+                foreach (var branch in companyDto.Branchs)
+                {
+                    _context.CompanyCountries.Add(new CompanyCountry() { Country = branch,CompanyId=company.Id });
+                }
+
                 _context.SaveChanges();
                 return true;
             }
@@ -46,7 +55,7 @@ namespace product.buisness
         {
             List<CompanyDto> companiesDtos = new List<CompanyDto>();
 
-            var companies = _context.Companies.ToList();
+            var companies = _context.Companies.Where(x=>x.IsDeleted == false).ToList();
             foreach(var company in companies)
             {
                 companiesDtos.Add(new CompanyDto()
@@ -57,7 +66,7 @@ namespace product.buisness
                     Id = company.Id,
                     StartDate = company.StartDate,
                      OwnerName=company.OwnerName,
-                     Sector=company.Sector
+                     Sector=company.Sector,
                 });
             }
             return companiesDtos;
@@ -65,15 +74,16 @@ namespace product.buisness
 
         public void Delete(int id)
         {
+            //if you try to delete the company it will give you an error. and the reason that company has Country related to it 
             var company = _context.Companies.First(x=>x.Id == id);
-            _context.Companies.Remove(company);
+            company.IsDeleted = true;
             _context.SaveChanges();
         }
         
         public bool EditCom(int id , string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
         {
             
-            var company = _context.Companies.FirstOrDefault(x=> x.Id==id);//1 3 5
+            var company = _context.Companies.FirstOrDefault(x=> x.Id==id & x.IsDeleted==false);//1 3 5
             if (company == null)
                 return false;
             company.CompanyName = companyName;

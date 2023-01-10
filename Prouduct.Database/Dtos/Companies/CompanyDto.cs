@@ -1,9 +1,9 @@
-﻿using Product.Database.Enums;
+﻿using production.Database.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 //test comment
-namespace Product.Database.Dtos.Companies
+namespace production.Database.Dtos.Companies
 {
     public class CompanyDto
     {
@@ -25,5 +25,7 @@ namespace Product.Database.Dtos.Companies
         public string Status { set; get; }
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
+
+       
     }
 }

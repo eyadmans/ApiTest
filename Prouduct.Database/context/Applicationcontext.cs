@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Prouduct.Database.entities;
+using production.Database.entities;
+using Prouduction.Database.entities;
 
-namespace Prouduct.Database.context
+namespace Prouduction.Database.context
 {
   
     public class Applicationcontext : DbContext
@@ -13,6 +14,7 @@ namespace Prouduct.Database.context
 
        
         public DbSet<Company> Companies  { get; set; }
-        
+        public DbSet<CompanyCountry > CompanyCountries { get; set; }
+        public DbSet<production.Database.entities.Product> Products  { get; set; }
     }
 }

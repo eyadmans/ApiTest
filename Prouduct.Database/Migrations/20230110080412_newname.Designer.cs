@@ -3,43 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prouduction.Database.context;
 
 namespace production.Database.Migrations
 {
     [DbContext(typeof(Applicationcontext))]
-    partial class ApplicationcontextModelSnapshot : ModelSnapshot
+    [Migration("20230110080412_newname")]
+    partial class newname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Production.Database.entities.ProductCompany", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCompany");
-                });
 
             modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
                 {
@@ -69,7 +49,12 @@ namespace production.Database.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("productId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("productId");
 
                     b.ToTable("Companies");
                 });
@@ -91,7 +76,7 @@ namespace production.Database.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("CompanyCountries");
+                    b.ToTable("CompanyCountry");
                 });
 
             modelBuilder.Entity("production.Database.entities.Product", b =>
@@ -101,11 +86,8 @@ namespace production.Database.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<short>("Coulor")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                    b.Property<int>("Coulor")
+                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -124,23 +106,11 @@ namespace production.Database.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Production.Database.entities.ProductCompany", b =>
+            modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
                 {
-                    b.HasOne("Prouduction.Database.entities.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("production.Database.entities.Product", "Product")
-                        .WithMany("Factory")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("Product");
+                    b.HasOne("production.Database.entities.Product", null)
+                        .WithMany("Company")
+                        .HasForeignKey("productId");
                 });
 
             modelBuilder.Entity("production.Database.entities.CompanyCountry", b =>
@@ -161,7 +131,7 @@ namespace production.Database.Migrations
 
             modelBuilder.Entity("production.Database.entities.Product", b =>
                 {
-                    b.Navigation("Factory");
+                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }

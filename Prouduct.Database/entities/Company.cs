@@ -1,10 +1,11 @@
-﻿using Product.Database.Enums;
+﻿using production.Database.entities;
+using production.Database.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Prouduct.Database.entities
+namespace Prouduction.Database.entities
 {
     public class Company
     {
@@ -14,8 +15,11 @@ namespace Prouduct.Database.entities
         public string Description { set; get; }
         public string OwnerName { set; get; } 
         public bool Status { set; get; }
+        public bool IsDeleted { get; set; }//we added this property to database. so we need migration
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
-        //public List<Country> Branch { set; get; }
+        public List<CompanyCountry> Branchs { get; set; } = new List<CompanyCountry>();
+
+        
     }
 }

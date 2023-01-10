@@ -5,13 +5,12 @@ using System.Text;
 
 namespace production.Database.Enums
 {
-   
-    
-    public enum Country : int
+    public enum Coulors : short 
     {
-        Syria,
-        Turkey,
-        Germany
-    }
-    
+        Red,
+        Black,
+        White,
+        gray,
+        green
+    } 
 }

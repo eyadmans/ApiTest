@@ -10,8 +10,8 @@ using Prouduction.Database.context;
 namespace production.Database.Migrations
 {
     [DbContext(typeof(Applicationcontext))]
-    [Migration("20230106204842_companyCreated")]
-    partial class companyCreated
+    [Migration("20230109152204_addedSoftDelete")]
+    partial class addedSoftDelete
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,26 @@ namespace production.Database.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Product.Database.entities.CompanyCountry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Country")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("CompanyCountry");
+                });
 
             modelBuilder.Entity("Prouduct.Database.entities.Company", b =>
                 {
@@ -33,6 +53,9 @@ namespace production.Database.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("OwnerName")
                         .HasColumnType("nvarchar(max)");
@@ -49,6 +72,22 @@ namespace production.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("Product.Database.entities.CompanyCountry", b =>
+                {
+                    b.HasOne("Prouduct.Database.entities.Company", "Company")
+                        .WithMany("Branchs")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Prouduct.Database.entities.Company", b =>
+                {
+                    b.Navigation("Branchs");
                 });
 #pragma warning restore 612, 618
         }
