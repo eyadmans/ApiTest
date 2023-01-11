@@ -25,19 +25,17 @@ namespace production.buisness
         public bool AddNewProduct(AddProuductRequestDto ProductDto)
         {
             
-            var C = _context.Companies.Where(x => x.IsDeleted == true).ToList();
-            if (C.Count!=0)
+            var companies = _context.Companies.Where(x => x.IsDeleted == false).ToList();
+            //افحص كل اي دي جاي من المستخدم
+            foreach (var productCompanyId in ProductDto.Companies)
             {
-                for (int i = 0; i <= C.Count; i++)
-                {
+                //ازا ما في ولا شركة بالداتا بيز الاي دي تبعها نفس الاي دي يلي المستخدم كتبها رجعلو فولس
+                if (companies.All(x => x.Id != productCompanyId))
+                    return false;
 
-                    foreach (var pro in ProductDto.Companies)
-                        if (pro == C[i].Id)
-                            return false;
-                }
             }
-           //get all undeleted companies
-           //check every company Id in the request if available in database
+            
+            
             if (ProductDto.Price  > 0 && ProductDto.Tax >= 0 && ProductDto.Tax <= 100)
             {
                 var product = new Product()
