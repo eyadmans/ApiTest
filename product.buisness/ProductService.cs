@@ -13,7 +13,9 @@ namespace production.buisness
 {
     public class ProductService
     {
+
         private Applicationcontext _context;
+        private CompanyService g;
 
         public ProductService(Applicationcontext context)
         {
@@ -22,6 +24,18 @@ namespace production.buisness
 
         public bool AddNewProduct(AddProuductRequestDto ProductDto)
         {
+            
+            var C = _context.Companies.Where(x => x.IsDeleted == true).ToList();
+            if (C.Count!=0)
+            {
+                for (int i = 0; i <= C.Count; i++)
+                {
+
+                    foreach (var pro in ProductDto.Companies)
+                        if (pro == C[i].Id)
+                            return false;
+                }
+            }
            //get all undeleted companies
            //check every company Id in the request if available in database
             if (ProductDto.Price  > 0 && ProductDto.Tax >= 0 && ProductDto.Tax <= 100)
@@ -36,9 +50,9 @@ namespace production.buisness
                     IsDeleted = false
                 };
                 foreach (var factor in ProductDto.Companies)
+                    
                     product.Factory.Add(new ProductCompany() {CompanyId = factor}) ;
-
-
+                //اي دي الكومباني ما موجود
 
                 _context.Products.Add(product);
                 _context.SaveChanges();
