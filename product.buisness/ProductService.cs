@@ -64,14 +64,16 @@ namespace production.buisness
         {
             List<ProductDto> ProductDtos = new List<ProductDto>();
 
-            var products = _context.Products.ToList();
+            var products = _context.Products.Where(x=> x.IsDeleted==false).ToList();
             foreach(var product in products)
             {
+              
+                    
                 ProductDtos.Add(new ProductDto()
                 {
+                    Id = product.Id,
                     ProductName = product.ProductName,
                     ProductDescription = product.ProductDescription,
-                    Id = product.Id ,
                     Price = product.Price,
                      Tax=product.Tax,
                      Coulor =product.Coulor,
@@ -98,7 +100,6 @@ namespace production.buisness
             product.Price = Price;
             product.Tax = Tax; 
             product.Coulor= Coulor;
-
             product.Factory = Factory;
             _context.SaveChanges();
             return true;
