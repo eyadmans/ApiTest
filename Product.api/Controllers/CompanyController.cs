@@ -51,5 +51,10 @@ namespace production.api.Controllers
             return s;   
             
         }
+        [HttpGet("Product/OnlyNames")]
+        public List<string> ViewCompaniesNames()
+        {
+            return _companyservice.GetOnlyNames();
+        }
     }
 }

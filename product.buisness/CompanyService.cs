@@ -95,5 +95,18 @@ namespace production.buisness
             _context.SaveChanges();
             return true;
         }
+
+
+        public List<string> GetOnlyNames()
+        {
+            var names = _context.Companies.Select(x => x.CompanyName).ToList() ;
+            return names;
+        }
+
+        public List<string> GetBySectors(int sector)
+        {
+            ///ما زبطت ولا بطريقة 
+        }
+
     }
 }

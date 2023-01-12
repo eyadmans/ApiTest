@@ -51,6 +51,12 @@ namespace Production.api.Controllers
                 return s;
 
             }
+        [HttpGet("GetMax")]
+        public double MaxPrice()
+        {
+          return   _productservice.GetHighestPrice();
+        }
+
         }
     }
 

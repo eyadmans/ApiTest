@@ -15,7 +15,6 @@ namespace production.buisness
     {
 
         private Applicationcontext _context;
-        private CompanyService g;
 
         public ProductService(Applicationcontext context)
         {
@@ -59,7 +58,6 @@ namespace production.buisness
             else
                 return false;
         }
-        
         public List<ProductDto> GetAllProducts()
         {
             List<ProductDto> ProductDtos = new List<ProductDto>();
@@ -104,5 +102,14 @@ namespace production.buisness
             _context.SaveChanges();
             return true;
         }
+
+        public double  GetHighestPrice()
+        {
+            var a = _context.Products.Max(x => x.Price);
+            return a;
+        }
+
+
+
     }
 }
