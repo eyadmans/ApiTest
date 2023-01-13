@@ -17,7 +17,7 @@ namespace production.api.Controllers
     public class CompanyController
     {
         private CompanyService _companyservice;
-        public CompanyController (CompanyService companyService)
+        public CompanyController(CompanyService companyService)
         {
             _companyservice = companyService;
         }
@@ -25,7 +25,7 @@ namespace production.api.Controllers
         [HttpPost("Product/AddCompany")]
         public bool AddCompany(AddCompanyRequestDto companyDto)
         {
-           
+
             var theResult = _companyservice.AddNewCompany(companyDto);
             return theResult;
         }
@@ -33,23 +33,33 @@ namespace production.api.Controllers
         [HttpGet("Product/ViewCompanies")]
         public List<CompanyDto> ViewCompanies()
         {
-            
+
             return _companyservice.GetAll();
-          
-           
+
+
         }
-        
+
         [HttpDelete("Product/DeleteCom")]
         public void DeleteCom(int id)
         {
-             _companyservice.Delete (id);
+            _companyservice.Delete(id);
         }
         [HttpPost("Product/Edit")]
         public bool EditCom(int id, string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
         {
-            var s= _companyservice.EditCom(id, companyName, description, ownerName, status, sector, startDate, branch);
-            return s;   
+            var s = _companyservice.EditCom(id, companyName, description, ownerName, status, sector, startDate, branch);
+            return s;
+
+        }
+
+        [HttpGet("Product/Search")]
+        public List<CompanyDto> SearchCompay(string name)
+        {
+
             
+                var a= _companyservice.Search(name);
+            return a;
+
         }
     }
 }

@@ -95,5 +95,33 @@ namespace production.buisness
             _context.SaveChanges();
             return true;
         }
-    }
+        public List<CompanyDto> Search(string name)
+        {
+            List<CompanyDto> SearchResult = new List<CompanyDto>();
+
+            foreach (var com in _context.Companies)
+            {
+                if (com.CompanyName.Contains(name))
+                {
+                    
+                    SearchResult.Add(new CompanyDto
+                    {
+                        Status = com.Status == true ? "On" : "OFF",
+                        CompanyName = com.CompanyName,
+                        Description = com.Description,
+                        Id = com.Id,
+                        StartDate = com.StartDate,
+                        OwnerName = com.OwnerName,
+                        Sector = com.Sector,
+                    });
+
+
+                }
+            }
+            return SearchResult;
+        }
+        }
+
+       
+    
 }
