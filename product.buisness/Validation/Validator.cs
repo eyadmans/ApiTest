@@ -14,14 +14,16 @@ namespace production.buisness.Validation
         public Validator()
         {
             RuleFor(x => x.CompanyName).MaximumLength(100).WithMessage("maximum length 100");
-            RuleFor(x => x.StartDate).Must(Date).WithMessage("Invalid date");
+            RuleFor(x => x.StartDate).Must(ValidateDate).WithMessage("Invalid date");
         }
-        public bool Date(DateTime startdate)
+        public bool ValidateDate(DateTime startdate)
         {
             DateTime a = new DateTime(2020, 1, 1);
             DateTime b = DateTime.Now;
-            if (companyDto.StartDate >= a & companyDto.StartDate <= b)
+            if (startdate >= a & startdate <= b)
                 return true;
+            else
+                return false;
         }
     }
 }
