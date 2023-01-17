@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using production.buisness;
+using production.buisness.Mapper;
 using Prouduction.Database.context;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,9 @@ namespace production.api
             services.AddControllers();
             services.AddDbContext<Applicationcontext>(optionsAction: options =>
              options.UseSqlServer(Configuration.GetConnectionString(name: "ApplicationConnection")));
+            var mapperConfig = new MapperConfiguration(mc => mc.AddProfile(new AutoMapperProfile()));
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
             services.AddScoped<CompanyService>();
             services.AddScoped<ProductService>();
             services.AddControllers();

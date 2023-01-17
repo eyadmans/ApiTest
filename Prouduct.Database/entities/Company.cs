@@ -1,5 +1,6 @@
 ﻿using production.Database.entities;
 using production.Database.Enums;
+using Production.Database.entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +20,7 @@ namespace Prouduction.Database.entities
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
         public List<CompanyCountry> Branchs { get; set; } = new List<CompanyCountry>();
-
-        
+        public DateTime CreateDate { get; set; }
+        public List<ProductCompany> Products { get; set; } = new List<ProductCompany>();
     }
 }

@@ -103,10 +103,11 @@ namespace production.buisness
             return names;
         }
 
-        public List<string> GetBySectors(int sector)
-        {
-            ///ما زبطت ولا بطريقة 
-        }
-
+      
+          
+        
     }
+
+       
+    
 }
