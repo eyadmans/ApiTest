@@ -1,6 +1,7 @@
 ﻿using production.Database.Dtos.Companies;
 using production.Database.entities;
 using production.Database.Enums;
+using Production.Database.Dtos.Companies;
 using Prouduction.Database.context;
 using Prouduction.Database.entities;
 using System;
@@ -13,10 +14,11 @@ namespace production.buisness
     public class CompanyService
     {
         private Applicationcontext _context;
-
-        public CompanyService(Applicationcontext context)
+        private  AutoMapper.IMapper _mapper;
+        public CompanyService(Applicationcontext context, AutoMapper.IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public bool AddNewCompany(AddCompanyRequestDto companyDto)
@@ -27,23 +29,9 @@ namespace production.buisness
             DateTime b = DateTime.Now;
             if (companyDto.StartDate >= a & companyDto.StartDate <= b)
             {
-                var company = new Company()
-                {
-                    CompanyName = companyDto.CompanyName,
-                    Description = companyDto.Description,
-                    OwnerName = companyDto.OwnerName,
-                    Status = companyDto.Status,
-                    Sector = companyDto.Sector,
-                    StartDate = companyDto.StartDate,
-                    IsDeleted = false
-                };
+                var company = _mapper.Map<Company>(companyDto);
+                company.CreateDate = DateTime.Now;
                 _context.Companies.Add(company);
-                _context.SaveChanges();
-                foreach (var branch in companyDto.Branchs)
-                {
-                    _context.CompanyCountries.Add(new CompanyCountry() { Country = branch,CompanyId=company.Id });
-                }
-
                 _context.SaveChanges();
                 return true;
             }
@@ -56,20 +44,9 @@ namespace production.buisness
             List<CompanyDto> companiesDtos = new List<CompanyDto>();
 
             var companies = _context.Companies.Where(x=>x.IsDeleted == false).ToList();
-            foreach(var company in companies)
-            {
-                companiesDtos.Add(new CompanyDto()
-                {
-                    Status = company.Status == true ? "On" : "OFF",
-                    CompanyName = company.CompanyName,
-                    Description = company.Description,
-                    Id = company.Id,
-                    StartDate = company.StartDate,
-                     OwnerName=company.OwnerName,
-                     Sector=company.Sector,
-                });
-            }
-            return companiesDtos;
+            var company = _mapper.Map<List<CompanyDto>>(companies);
+        
+            return company;
         }
 
         public void Delete(int id)
@@ -80,18 +57,11 @@ namespace production.buisness
             _context.SaveChanges();
         }
         
-        public bool EditCom(int id , string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
+        public bool EditCom(EditRequestDto edit)
         {
             
-            var company = _context.Companies.FirstOrDefault(x=> x.Id==id & x.IsDeleted==false);//1 3 5
-            if (company == null)
-                return false;
-            company.CompanyName = companyName;
-            company.Description = description;
-            company.OwnerName = ownerName;
-            company.Status = status;
-            company.Sector = sector;
-            company.StartDate = startDate;
+            var company = _context.Companies.FirstOrDefault(x=> x.Id==edit.Id & x.IsDeleted==false);//1 3 5
+            _mapper.Map(edit,company);
             _context.SaveChanges();
             return true;
         }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using production.Database.Enums;
 using production.Database.entities;
+using Production.Database.Dtos.Companies;
 
 namespace production.buisness.Mapper
 {
@@ -20,8 +21,10 @@ namespace production.buisness.Mapper
                 .ForMember(des=> des.Country , opt=> opt.MapFrom(res=> res)) ;
 
             CreateMap<Company,CompanyDto>()
-                .ForMember(des => des.Status , opt => opt.MapFrom(res => res.Status == true ? "on" : "off")).ForMember(des=> des.CompanyName , opt=>opt.MapFrom(res=>res.CompanyName.ToUpper()));
-
+                .ForMember(des => des.Status , opt => opt.MapFrom(res => res.Status == true ? "on" : "off"))
+                .ForMember(des=> des.CompanyName , opt=>opt.MapFrom(res=>res.CompanyName.ToUpper()));
+           
+            CreateMap<EditRequestDto, Company>();
         }
     }
 }
