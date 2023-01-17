@@ -44,6 +44,7 @@ namespace production.api.Controllers
         {
              _companyservice.Delete (id);
         }
+
         [HttpPost("Product/Edit")]
         public bool EditCom(int id, string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
         {
