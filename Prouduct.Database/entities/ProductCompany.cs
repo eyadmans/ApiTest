@@ -13,13 +13,10 @@ namespace Production.Database.entities
     public class ProductCompany
     {
         [Key]
-        public int Id { set; get; }
-
+        public int Id { set ; get ; }
         [ForeignKey("Company")]
         public int CompanyId { set; get; }
         public Company Company { set; get; }
-
-
         [ForeignKey("Product")]
         public int ProductId { set; get; }
         public Product Product  { set; get; }

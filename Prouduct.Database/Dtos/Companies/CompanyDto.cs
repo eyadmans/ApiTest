@@ -26,7 +26,6 @@ namespace production.Database.Dtos.Companies
         public string Status { set; get; }
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
-
         public List<CompanyCountry> Branchs { get; set; } = new List<CompanyCountry>();
     }
 }

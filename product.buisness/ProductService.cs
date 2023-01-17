@@ -1,6 +1,9 @@
-﻿using production.Database.Dtos.Companies;
+﻿using FluentValidation;
+using production.buisness.Validation;
+using production.Database.Dtos.Companies;
 using production.Database.entities;
 using production.Database.Enums;
+using Production.Database.Dtos.Products;
 using Production.Database.entities;
 using Prouduction.Database.context;
 using Prouduction.Database.entities;
@@ -8,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace production.buisness
 {
@@ -15,43 +19,30 @@ namespace production.buisness
     {
 
         private Applicationcontext _context;
-
-        public ProductService(Applicationcontext context)
+        private AutoMapper.IMapper _mapper;
+        private readonly Validator _validator;
+        public ProductService(Applicationcontext context, AutoMapper.IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
+            _validator = new Validator();
         }
 
         public bool AddNewProduct(AddProuductRequestDto ProductDto)
         {
             
             var companies = _context.Companies.Where(x => x.IsDeleted == false).ToList();
-            //افحص كل اي دي جاي من المستخدم
+
             foreach (var productCompanyId in ProductDto.Companies)
             {
-                //ازا ما في ولا شركة بالداتا بيز الاي دي تبعها نفس الاي دي يلي المستخدم كتبها رجعلو فولس
                 if (companies.All(x => x.Id != productCompanyId))
                     return false;
-
             }
-            
-            
+            var product = _mapper.Map<Product>(ProductDto);
+            product.CreateDate = DateTime.Now;
+            _context.Products.Add(product);
             if (ProductDto.Price  > 0 && ProductDto.Tax >= 0 && ProductDto.Tax <= 100)
             {
-                var product = new Product()
-                {
-                    ProductName = ProductDto.ProductName,
-                    ProductDescription = ProductDto.ProductDescription,
-                    Price = ProductDto.Price,
-                    Tax = ProductDto.Tax,
-                    Coulor = ProductDto.Coulor,
-                    IsDeleted = false
-                };
-                foreach (var factor in ProductDto.Companies)
-                    
-                    product.Factory.Add(new ProductCompany() {CompanyId = factor}) ;
-                //اي دي الكومباني ما موجود
-
-                _context.Products.Add(product);
                 _context.SaveChanges();
                 return true;
             }
@@ -62,22 +53,10 @@ namespace production.buisness
         {
             List<ProductDto> ProductDtos = new List<ProductDto>();
 
-            var products = _context.Products.Where(x=> x.IsDeleted==false).ToList();
-            foreach(var product in products)
-            {
-              
-                    
-                ProductDtos.Add(new ProductDto()
-                {
-                    Id = product.Id,
-                    ProductName = product.ProductName,
-                    ProductDescription = product.ProductDescription,
-                    Price = product.Price,
-                     Tax=product.Tax,
-                     Coulor =product.Coulor,
-                });
-            }
-            return ProductDtos;
+            var products = _context.Products.Where(x => x.IsDeleted == false).ToList();
+            var product = _mapper.Map<List<ProductDto>>(products);
+
+            return product;
         }
 
         public void DeleteProduct(int id)
@@ -87,18 +66,14 @@ namespace production.buisness
             _context.SaveChanges();
         }
         
-        public bool EditProduct(int id , string  ProductName, string ProductDescription, double Price, double Tax, Coulors Coulor, List<ProductCompany> Factory)
+        public async Task<bool> EditProduct(PEditRequest edit)
         {
-            
-            var product = _context.Products.FirstOrDefault(x=> x.Id==id & x.IsDeleted==false);//1 3 5
-            if (product == null)
+            var result = await _validator.ValidateAsync(edit);
+            if (result.IsValid == false)
                 return false;
-            product.ProductName = ProductName;
-            product.ProductDescription = ProductDescription;
-            product.Price = Price;
-            product.Tax = Tax; 
-            product.Coulor= Coulor;
-            product.Factory = Factory;
+
+            var product = _context.Products.FirstOrDefault(x => x.Id == edit.Id & x.IsDeleted == false);
+            _mapper.Map(edit, product);
             _context.SaveChanges();
             return true;
         }
@@ -108,8 +83,5 @@ namespace production.buisness
             var a = _context.Products.Max(x => x.Price);
             return a;
         }
-
-
-
     }
 }

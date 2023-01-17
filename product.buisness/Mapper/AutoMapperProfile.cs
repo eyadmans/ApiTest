@@ -9,6 +9,8 @@ using AutoMapper;
 using production.Database.Enums;
 using production.Database.entities;
 using Production.Database.Dtos.Companies;
+using Production.Database.entities;
+using Production.Database.Dtos.Products;
 
 namespace production.buisness.Mapper
 {
@@ -17,6 +19,7 @@ namespace production.buisness.Mapper
         public AutoMapperProfile()
         {
             CreateMap<AddCompanyRequestDto , Company>();
+
             CreateMap<Country, CompanyCountry>()
                 .ForMember(des=> des.Country , opt=> opt.MapFrom(res=> res)) ;
 
@@ -25,6 +28,18 @@ namespace production.buisness.Mapper
                 .ForMember(des=> des.CompanyName , opt=>opt.MapFrom(res=>res.CompanyName.ToUpper()));
            
             CreateMap<EditRequestDto, Company>();
+
+            CreateMap<AddProuductRequestDto, Product>();
+
+            CreateMap<Company, ProductCompany>()
+                .ForMember(des => des.CompanyId, opt => opt.MapFrom(res => res.Id));
+
+            CreateMap<Product, ProductCompany>()
+                .ForMember(des => des.ProductId, opt => opt.MapFrom(res => res.Id));
+
+            CreateMap<Product, ProductDto>();
+
+            CreateMap<PEditRequest, Product>();
         }
     }
 }

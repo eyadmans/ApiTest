@@ -1,4 +1,5 @@
-﻿using production.Database.Dtos.Companies;
+﻿using production.buisness.Validation;
+using production.Database.Dtos.Companies;
 using production.Database.entities;
 using production.Database.Enums;
 using Production.Database.Dtos.Companies;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace production.buisness
 {
@@ -15,28 +17,21 @@ namespace production.buisness
     {
         private Applicationcontext _context;
         private  AutoMapper.IMapper _mapper;
+        private readonly Validator _validator;
         public CompanyService(Applicationcontext context, AutoMapper.IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
+            _validator = new Validator();
         }
 
         public bool AddNewCompany(AddCompanyRequestDto companyDto)
         {
-            //first of all. as we used dto to send data to user. we need to use it to take data from user.
-            
-            DateTime a =new DateTime (2020, 1, 1);
-            DateTime b = DateTime.Now;
-            if (companyDto.StartDate >= a & companyDto.StartDate <= b)
-            {
                 var company = _mapper.Map<Company>(companyDto);
                 company.CreateDate = DateTime.Now;
                 _context.Companies.Add(company);
                 _context.SaveChanges();
-                return true;
-            }
-            else
-                return false;
+            return true;
         }
         
         public List<CompanyDto> GetAll()
@@ -57,9 +52,12 @@ namespace production.buisness
             _context.SaveChanges();
         }
         
-        public bool EditCom(EditRequestDto edit)
+        public async Task<bool> EditCom(EditRequestDto edit)
         {
-            
+            var result = await _validator.ValidateAsync(edit);
+            if (result.IsValid == false)
+                return false;
+
             var company = _context.Companies.FirstOrDefault(x=> x.Id==edit.Id & x.IsDeleted==false);//1 3 5
             _mapper.Map(edit,company);
             _context.SaveChanges();
