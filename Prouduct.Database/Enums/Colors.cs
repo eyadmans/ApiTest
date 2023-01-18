@@ -5,12 +5,12 @@ using System.Text;
 
 namespace production.Database.Enums
 {
-    public enum Coulors : short 
+    public enum Colors : short 
     {
         Red,
         Black,
         White,
-        gray,
-        green
+        Gray,
+        Green
     } 
 }

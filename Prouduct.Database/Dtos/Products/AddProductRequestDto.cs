@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace production.Database.Dtos.Companies
 {
-    public class AddProuductRequestDto
+    public class AddProductRequestDto
     {
-
         public string ProductName { set; get; }
         public string ProductDescription { set; get; }
         public double Price { set; get; }
         public double Tax { set; get; }
-        public Coulors Coulor { set; get; }
-        
+        public Colors Coulor { set; get; }
         public List<int> Companies { set; get; }
     }
 }

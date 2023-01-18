@@ -15,10 +15,11 @@ namespace production.Database.entities
         [Required]
         [StringLength(100)]
         public string ProductName { set; get; }
+        [StringLength(1000)]
         public string ProductDescription { set; get; }
         public double Price { set; get; }
         public double  Tax { set; get; }
-        public Coulors Coulor { set; get; }
+        public Colors Color { set; get; }
         public List<ProductCompany> Companies { set; get; } = new List<ProductCompany>();
 
     }

@@ -10,8 +10,8 @@ using Prouduction.Database.context;
 namespace production.Database.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230116054711_new")]
-    partial class @new
+    [Migration("20230118123518_lastedit")]
+    partial class lastedit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace production.Database.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCompany");
+                    b.ToTable("ProductCompanies");
                 });
 
             modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
@@ -51,19 +51,26 @@ namespace production.Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("LastEditDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("OwnerName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Sector")
                         .HasColumnType("int");
@@ -109,17 +116,26 @@ namespace production.Database.Migrations
                     b.Property<short>("Color")
                         .HasColumnType("smallint");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastEditDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("ProductDescription")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<double>("Tax")
                         .HasColumnType("float");

@@ -24,11 +24,11 @@ namespace production.api.Controllers
         }
 
         [HttpPost("Product/AddCompany")]
-        public bool AddCompany(AddCompanyRequestDto companyDto)
+        public async Task<bool> AddCompany(AddCompanyRequestDto companyDto)
         {
            
             var theResult = _companyservice.AddNewCompany(companyDto);
-            return theResult;
+            return await theResult;
         }
 
         [HttpGet("Product/ViewCompanies")]
@@ -47,12 +47,12 @@ namespace production.api.Controllers
         }
 
         [HttpPost("Product/Edit")]
-        public bool EditCom(EditRequestDto edit)
+        public async Task<bool> EditCom(EditCompanyRequestDto edit)
         {
             var s= _companyservice.EditCom(edit);
-            return s;   
-            
+            return await s;
         }
+
         [HttpGet("Product/OnlyNames")]
         public List<string> ViewCompaniesNames()
         {

@@ -9,7 +9,7 @@ using Prouduction.Database.context;
 
 namespace production.Database.Migrations
 {
-    [DbContext(typeof(Applicationcontext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20230110215514_initial")]
     partial class initial
     {
@@ -103,7 +103,7 @@ namespace production.Database.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<short>("Coulor")
+                    b.Property<short>("Color")
                         .HasColumnType("smallint");
 
                     b.Property<bool>("IsDeleted")

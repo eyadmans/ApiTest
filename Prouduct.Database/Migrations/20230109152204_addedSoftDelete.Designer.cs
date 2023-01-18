@@ -9,7 +9,7 @@ using Prouduction.Database.context;
 
 namespace production.Database.Migrations
 {
-    [DbContext(typeof(Applicationcontext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20230109152204_addedSoftDelete")]
     partial class addedSoftDelete
     {

@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace production.buisness.Validation
 {
-    public class Validator:AbstractValidator<EditRequestDto>
+    public class CompanyEditValidator:AbstractValidator<EditCompanyRequestDto>
     {
-        public Validator()
+        public CompanyEditValidator()
         {
             RuleFor(x => x.CompanyName).MaximumLength(100).WithMessage("maximum length 100");
-            RuleFor(x => x.StartDate).Must(ValidateDate).WithMessage("Invalid date");
-            
+            RuleFor(x => x.StartDate).Must(ValidateDate).WithMessage("Invalid date");  
         }
         public bool ValidateDate(DateTime startdate)
         {

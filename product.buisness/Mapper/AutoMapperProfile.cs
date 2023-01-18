@@ -27,9 +27,9 @@ namespace production.buisness.Mapper
                 .ForMember(des => des.Status , opt => opt.MapFrom(res => res.Status == true ? "on" : "off"))
                 .ForMember(des=> des.CompanyName , opt=>opt.MapFrom(res=>res.CompanyName.ToUpper()));
            
-            CreateMap<EditRequestDto, Company>();
+            CreateMap<EditCompanyRequestDto, Company>();
 
-            CreateMap<AddProuductRequestDto, Product>();
+            CreateMap<AddProductRequestDto, Product>();
 
             CreateMap<Company, ProductCompany>()
                 .ForMember(des => des.CompanyId, opt => opt.MapFrom(res => res.Id));
@@ -39,7 +39,7 @@ namespace production.buisness.Mapper
 
             CreateMap<Product, ProductDto>();
 
-            CreateMap<PEditRequest, Product>();
+            CreateMap<ProductEditRequest, Product>();
         }
     }
 }

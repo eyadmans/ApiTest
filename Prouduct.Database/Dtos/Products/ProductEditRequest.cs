@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Production.Database.Dtos.Products
 {
-
-        public class PEditRequest : AddProuductRequestDto
+    public class ProductEditRequest : AddProductRequestDto
     {
-            public int Id { get; set; }
-        }
-
+        public int Id { get; set; }
+        public DateTime LastEditDate { get; set; }
+    }
 }

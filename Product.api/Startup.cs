@@ -32,7 +32,7 @@ namespace production.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<Applicationcontext>(optionsAction: options =>
+            services.AddDbContext<ApplicationContext>(optionsAction: options =>
              options.UseSqlServer(Configuration.GetConnectionString(name: "ApplicationConnection")));
             var mapperConfig = new MapperConfiguration(mc => mc.AddProfile(new AutoMapperProfile()));
             IMapper mapper = mapperConfig.CreateMapper();

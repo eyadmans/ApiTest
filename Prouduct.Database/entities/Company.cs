@@ -10,8 +10,12 @@ namespace Prouduction.Database.entities
 {
     public class Company: BaseEntities
     {
+        [Required]
+        [StringLength(100)]
         public string CompanyName { set; get; }
+        [StringLength(1000)]
         public string Description { set; get; }
+        [StringLength(50)]
         public string OwnerName { set; get; } 
         public bool Status { set; get; }
 

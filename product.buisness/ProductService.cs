@@ -17,43 +17,42 @@ namespace production.buisness
 {
     public class ProductService
     {
-
-        private Applicationcontext _context;
+        private ApplicationContext _context;
         private AutoMapper.IMapper _mapper;
-        private readonly PValidator _pvalidator;
+        private readonly ProductEditValidator _editvalidator;
+        private readonly ProductAddValidator _addValidator;
 
-        public ProductService(Applicationcontext context, AutoMapper.IMapper mapper)
+        public ProductService(ApplicationContext context, AutoMapper.IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _pvalidator = new PValidator();
+            _editvalidator = new ProductEditValidator();
+            _addValidator = new ProductAddValidator();
         }
 
-        public bool AddNewProduct(AddProuductRequestDto ProductDto)
+        public async Task<bool> AddNewProduct(AddProductRequestDto productDto)
         {
-            
             var companies = _context.Companies.Where(x => x.IsDeleted == false).ToList();
-
-            foreach (var productCompanyId in ProductDto.Companies)
+            foreach (var productCompanyId in productDto.Companies)
             {
                 if (companies.All(x => x.Id != productCompanyId))
                     return false;
             }
-            var product = _mapper.Map<Product>(ProductDto);
+            var result = await _addValidator.ValidateAsync(productDto);
+            if (result.IsValid == false)
+                return false;
+            var product = _mapper.Map<Product>(productDto);
             product.CreateDate = DateTime.Now;
             _context.Products.Add(product);
-
-                _context.SaveChanges();
-                return true;
+            _context.SaveChanges();
+             return true;
         }
         public List<ProductDto> GetAllProducts()
         {
-            List<ProductDto> ProductDtos = new List<ProductDto>();
-
+            List<ProductDto> productDtos = new List<ProductDto>();
             var products = _context.Products.Where(x => x.IsDeleted == false).ToList();
-            var product = _mapper.Map<List<ProductDto>>(products);
-
-            return product;
+            productDtos = _mapper.Map<List<ProductDto>>(products);
+            return productDtos;
         }
 
         public void DeleteProduct(int id)
@@ -63,22 +62,22 @@ namespace production.buisness
             _context.SaveChanges();
         }
         
-        public async Task<bool> EditProduct(PEditRequest edit)
+        public async Task<bool> EditProduct(ProductEditRequest edit)
         {
-            var result = await _pvalidator.ValidateAsync(edit);
+            var result = await _editvalidator.ValidateAsync(edit);
             if (result.IsValid == false)
                 return false;
 
             var product = _context.Products.FirstOrDefault(x => x.Id == edit.Id & x.IsDeleted == false);
+            product.LastEditDate = DateTime.Now;
             _mapper.Map(edit, product);
             _context.SaveChanges();
             return true;
         }
-
         public double  GetHighestPrice()
         {
-            var a = _context.Products.Max(x => x.Price);
-            return a;
+            var mostExpensiveProduct = _context.Products.Max(x => x.Price);
+            return mostExpensiveProduct;
         }
     }
 }

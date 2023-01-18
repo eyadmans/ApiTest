@@ -9,7 +9,7 @@ using Prouduction.Database.context;
 
 namespace production.Database.Migrations
 {
-    [DbContext(typeof(Applicationcontext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20230110080412_newname")]
     partial class newname
     {
@@ -86,7 +86,7 @@ namespace production.Database.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Coulor")
+                    b.Property<int>("Color")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")

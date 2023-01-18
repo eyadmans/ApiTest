@@ -36,7 +36,7 @@ namespace production.Database.Migrations
                 newName: "IX_CompanyCountries_CompanyId");
 
             migrationBuilder.AlterColumn<short>(
-                name: "Coulor",
+                name: "Color",
                 table: "Products",
                 type: "smallint",
                 nullable: false,
@@ -127,7 +127,7 @@ namespace production.Database.Migrations
                 newName: "IX_CompanyCountry_CompanyId");
 
             migrationBuilder.AlterColumn<int>(
-                name: "Coulor",
+                name: "Color",
                 table: "Products",
                 type: "int",
                 nullable: false,

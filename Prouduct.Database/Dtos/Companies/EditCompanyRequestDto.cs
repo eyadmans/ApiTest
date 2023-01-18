@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Production.Database.Dtos.Companies
 {
-    public class EditRequestDto:AddCompanyRequestDto 
+    public class EditCompanyRequestDto:AddCompanyRequestDto 
     {
         public int Id { get; set; }
+        public DateTime LastEditDate { get; set; }
     }
 }

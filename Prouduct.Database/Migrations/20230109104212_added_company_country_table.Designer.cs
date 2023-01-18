@@ -9,7 +9,7 @@ using Prouduction.Database.context;
 
 namespace production.Database.Migrations
 {
-    [DbContext(typeof(Applicationcontext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20230109104212_added_company_country_table")]
     partial class added_company_country_table
     {
