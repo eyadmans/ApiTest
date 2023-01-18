@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prouduction.Database.context;
 
 namespace production.Database.Migrations
 {
     [DbContext(typeof(Applicationcontext))]
-    partial class ApplicationcontextModelSnapshot : ModelSnapshot
+    [Migration("20230110215514_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,9 +52,6 @@ namespace production.Database.Migrations
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -130,7 +129,7 @@ namespace production.Database.Migrations
             modelBuilder.Entity("Production.Database.entities.ProductCompany", b =>
                 {
                     b.HasOne("Prouduction.Database.entities.Company", "Company")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -160,8 +159,6 @@ namespace production.Database.Migrations
             modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
                 {
                     b.Navigation("Branchs");
-
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("production.Database.entities.Product", b =>

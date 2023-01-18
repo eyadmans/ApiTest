@@ -3,6 +3,7 @@ using production.buisness;
 using production.Database.Dtos.Companies;
 using production.Database.entities;
 using production.Database.Enums;
+using Production.Database.Dtos.Companies;
 using Prouduction.Database.entities;
 using System;
 using System.Collections.Generic;
@@ -44,12 +45,18 @@ namespace production.api.Controllers
         {
              _companyservice.Delete (id);
         }
+
         [HttpPost("Product/Edit")]
-        public bool EditCom(int id, string companyName, string description, string ownerName, bool status, Sectors sector, DateTime startDate, List<Country> branch)
+        public bool EditCom(EditRequestDto edit)
         {
-            var s= _companyservice.EditCom(id, companyName, description, ownerName, status, sector, startDate, branch);
+            var s= _companyservice.EditCom(edit);
             return s;   
             
+        }
+        [HttpGet("Product/OnlyNames")]
+        public List<string> ViewCompaniesNames()
+        {
+            return _companyservice.GetOnlyNames();
         }
     }
 }

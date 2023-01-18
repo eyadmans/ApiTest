@@ -10,18 +10,16 @@ using System.Threading.Tasks;
 
 namespace production.Database.entities
 {
-    public class Product
+    public class Product : BaseEntities
     {
-
-        [Key]
-        public int Id { get; set; }
+        [Required]
+        [StringLength(100)]
         public string ProductName { set; get; }
         public string ProductDescription { set; get; }
         public double Price { set; get; }
         public double  Tax { set; get; }
         public Coulors Coulor { set; get; }
-        public bool IsDeleted { set; get; }
-        public List<ProductCompany> Factory { set; get; } = new List<ProductCompany>();
+        public List<ProductCompany> Companies { set; get; } = new List<ProductCompany>();
 
     }
 }
