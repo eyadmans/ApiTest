@@ -20,12 +20,13 @@ namespace production.buisness
 
         private Applicationcontext _context;
         private AutoMapper.IMapper _mapper;
-        private readonly Validator _validator;
+        private readonly PValidator _pvalidator;
+
         public ProductService(Applicationcontext context, AutoMapper.IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _validator = new Validator();
+            _pvalidator = new PValidator();
         }
 
         public bool AddNewProduct(AddProuductRequestDto ProductDto)
@@ -41,13 +42,9 @@ namespace production.buisness
             var product = _mapper.Map<Product>(ProductDto);
             product.CreateDate = DateTime.Now;
             _context.Products.Add(product);
-            if (ProductDto.Price  > 0 && ProductDto.Tax >= 0 && ProductDto.Tax <= 100)
-            {
+
                 _context.SaveChanges();
                 return true;
-            }
-            else
-                return false;
         }
         public List<ProductDto> GetAllProducts()
         {
@@ -68,7 +65,7 @@ namespace production.buisness
         
         public async Task<bool> EditProduct(PEditRequest edit)
         {
-            var result = await _validator.ValidateAsync(edit);
+            var result = await _pvalidator.ValidateAsync(edit);
             if (result.IsValid == false)
                 return false;
 
