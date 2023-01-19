@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prouduction.Database.context;
 
-namespace production.Database.Migrations
+namespace Production.Database.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationcontextModelSnapshot : ModelSnapshot
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -117,23 +117,23 @@ namespace production.Database.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastEditDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<double>("Tax")
                         .HasColumnType("float");

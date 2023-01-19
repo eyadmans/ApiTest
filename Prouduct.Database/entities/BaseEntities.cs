@@ -14,7 +14,5 @@ namespace Production.Database.entities
         public bool IsDeleted { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? LastEditDate { get; set; }
-
-
     }
 }

@@ -8,8 +8,8 @@ namespace production.Database.Dtos.Companies
     {
         private double _price;
         public int Id { get; set; }
-        public string ProductName { set; get; }
-        public string ProductDescription { set; get; }
+        public string Name { set; get; }
+        public string Description { set; get; }
         public double Price
         {
             set

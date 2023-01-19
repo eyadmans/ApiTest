@@ -21,9 +21,9 @@ namespace production.buisness.Validation
             DateTime a = new DateTime(2020, 1, 1);
             DateTime b = DateTime.Now;
             if (startdate < a || startdate > b)
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
     }
 }

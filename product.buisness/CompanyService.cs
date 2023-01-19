@@ -4,6 +4,7 @@ using production.Database.Dtos.Companies;
 using production.Database.entities;
 using production.Database.Enums;
 using Production.Database.Dtos.Companies;
+using Production.Database.entities;
 using Prouduction.Database.context;
 using Prouduction.Database.entities;
 using System;
@@ -11,16 +12,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace production.buisness
 {
+    
     public class CompanyService
     {
         private ApplicationContext _context;
         private AutoMapper.IMapper _mapper;
         private readonly CompanyEditValidator _editValidatorCompany;
         private readonly CompanyAddValidator _addValidatorCompany;
-
         public CompanyService(ApplicationContext context, AutoMapper.IMapper mapper)
         {
             _context = context;
@@ -48,14 +50,12 @@ namespace production.buisness
             companiesDtos = _mapper.Map<List<CompanyDto>>(companies);
             return companiesDtos;
         }
-
         public void Delete(int id)
         {
             var company = _context.Companies.First(x=>x.Id == id);
             company.IsDeleted = true;
             _context.SaveChanges();
         }
-        
         public async Task<bool> EditCompany(EditCompanyRequestDto edit)
         {
             var result = await _editValidatorCompany.ValidateAsync(edit);
@@ -72,9 +72,18 @@ namespace production.buisness
         {
             var names = _context.Companies.Select(x => x.CompanyName).ToList() ;
             return names;
-        }    
+        }
+        public List<Product> GetCompanyProducts(int id)
+        {
+            var productId = _context.ProductCompanies.Include(x=>Product).Where(x => x.CompanyId == id).ToList();
+            var result = productId.Select(x => x.Product).ToList();
+            return result;
+        }
+        public CompanyDto GetCompanyById (int id)
+        {
+            var companies = _context.Companies.FirstOrDefault(x => x.Id == id);
+            var company = _mapper.Map<CompanyDto>(companies);
+            return company;
+        }
     }
-
-       
-    
 }

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prouduction.Database.context;
 
-namespace production.Database.Migrations
+namespace Production.Database.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230110215514_initial")]
+    [Migration("20230119092122_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace production.Database.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCompany");
+                    b.ToTable("ProductCompanies");
                 });
 
             modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
@@ -51,16 +51,26 @@ namespace production.Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("LastEditDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("OwnerName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Sector")
                         .HasColumnType("int");
@@ -106,17 +116,26 @@ namespace production.Database.Migrations
                     b.Property<short>("Color")
                         .HasColumnType("smallint");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("LastEditDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<double>("Tax")
                         .HasColumnType("float");
@@ -129,7 +148,7 @@ namespace production.Database.Migrations
             modelBuilder.Entity("Production.Database.entities.ProductCompany", b =>
                 {
                     b.HasOne("Prouduction.Database.entities.Company", "Company")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -159,6 +178,8 @@ namespace production.Database.Migrations
             modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
                 {
                     b.Navigation("Branches");
+
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("production.Database.entities.Product", b =>

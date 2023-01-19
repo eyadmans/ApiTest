@@ -30,10 +30,15 @@ namespace production.buisness.Mapper
             CreateMap<EditCompanyRequestDto, Company>();
 
             CreateMap<AddProductRequestDto, Product>();
+            CreateMap<int, ProductCompany>()
+                .ForMember(to => to.CompanyId, opt => opt.MapFrom(from => from));
+
 
             CreateMap<Product, ProductDto>();
 
             CreateMap<ProductEditRequest, Product>();
+            CreateMap<int, ProductCompany>()
+                .ForMember(to => to.CompanyId, opt => opt.MapFrom(from => from));
         }
     }
 }

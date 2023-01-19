@@ -11,6 +11,5 @@ namespace Production.Database.Dtos.Companies
     public class EditCompanyRequestDto:AddCompanyRequestDto 
     {
         public int Id { get; set; }
-        public DateTime LastEditDate { get; set; }
     }
 }

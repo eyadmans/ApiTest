@@ -4,6 +4,7 @@ using production.Database.Dtos.Companies;
 using production.Database.Enums;
 using Production.Database.Dtos.Products;
 using Production.Database.entities;
+using Prouduction.Database.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,17 @@ namespace Production.api.Controllers
         public double MaxPrice()
         {
           return   _productservice.GetHighestPrice();
+        }
+
+        [HttpGet("Product/GetProductById")]
+        public ProductDto GetProductById(int id)
+        {
+            return _productservice.GetProductById(id);
+        }
+        [HttpGet("Prodcut/GetProductCompanies")]
+        public List<Company> GetCompanyProducts(int id)
+        {
+            return _productservice.GetProductCompanies(id);
         }
 
     }

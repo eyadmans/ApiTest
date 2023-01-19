@@ -79,5 +79,18 @@ namespace production.buisness
             var mostExpensiveProduct = _context.Products.Max(x => x.Price);
             return mostExpensiveProduct;
         }
+
+        public ProductDto GetProductById(int id)
+        {
+            var products = _context.Products.FirstOrDefault(x => x.Id == id);
+            var product = _mapper.Map<ProductDto>(products);
+            return product;
+        }
+        public List<Company> GetProductCompanies(int id)
+        {
+            var products = _context.ProductCompanies.Where(x => x.ProductId == id).ToList();
+            var result = products.Select(x => x.Company).ToList();
+            return result;
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace production.Database.Dtos.Companies
 {
     public class AddProductRequestDto
     {
-        public string ProductName { set; get; }
-        public string ProductDescription { set; get; }
+        public string Name { set; get; }
+        public string Description { set; get; }
         public double Price { set; get; }
         public double Tax { set; get; }
         public Colors Color { set; get; }

@@ -4,6 +4,7 @@ using production.Database.Dtos.Companies;
 using production.Database.entities;
 using production.Database.Enums;
 using Production.Database.Dtos.Companies;
+using Production.Database.entities;
 using Prouduction.Database.entities;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace production.api.Controllers
     public class CompanyController
     {
         private CompanyService _companyservice;
+        private ProductService _productservice;
         public CompanyController (CompanyService companyService)
         {
             _companyservice = companyService;
@@ -37,7 +39,6 @@ namespace production.api.Controllers
             
             return _companyservice.GetAll();
           
-           
         }
         
         [HttpDelete("Product/DeleteCom")]
@@ -53,10 +54,23 @@ namespace production.api.Controllers
             return await s;
         }
 
+        [HttpGet("Prodcut/GetCompanyProducts")]
+        public List<Product> GetCompanyProducts(int id)
+        {
+            return _companyservice.GetCompanyProducts(id);
+        }
+
         [HttpGet("Product/OnlyNames")]
         public List<string> ViewCompaniesNames()
         {
             return _companyservice.GetOnlyNames();
         }
+
+        [HttpGet("Product/GetCompanyById")]
+        public CompanyDto GetCompanyById(int id)
+        {
+            return _companyservice.GetCompanyById(id);
+        }
+        
     }
 }
