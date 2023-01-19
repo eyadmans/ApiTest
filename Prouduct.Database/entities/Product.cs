@@ -14,9 +14,9 @@ namespace production.Database.entities
     {
         [Required]
         [StringLength(100)]
-        public string ProductName { set; get; }
+        public string Name { set; get; }
         [StringLength(1000)]
-        public string ProductDescription { set; get; }
+        public string Description { set; get; }
         public double Price { set; get; }
         public double  Tax { set; get; }
         public Colors Color { set; get; }

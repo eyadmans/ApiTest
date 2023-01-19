@@ -31,12 +31,6 @@ namespace production.buisness.Mapper
 
             CreateMap<AddProductRequestDto, Product>();
 
-            CreateMap<Company, ProductCompany>()
-                .ForMember(des => des.CompanyId, opt => opt.MapFrom(res => res.Id));
-
-            CreateMap<Product, ProductCompany>()
-                .ForMember(des => des.ProductId, opt => opt.MapFrom(res => res.Id));
-
             CreateMap<Product, ProductDto>();
 
             CreateMap<ProductEditRequest, Product>();

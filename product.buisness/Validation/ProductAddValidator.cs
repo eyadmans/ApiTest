@@ -13,17 +13,9 @@ namespace production.buisness.Validation
         public ProductAddValidator()
         {
             RuleFor(x => x.ProductName).MaximumLength(100).WithMessage("maximum length 100");
-            RuleFor(x => x.Price).Must(ValidatePrice).WithMessage("Invalid price");
+            RuleFor(x => x.Price).GreaterThan(0).WithMessage("Invalid price");
             RuleFor(x => x.Tax).Must(ValidateTax).WithMessage("Invalid Tax");
 
-        }
-
-        private bool ValidatePrice(double Price)
-        {
-            if (Price > 0)
-                return true;
-            else
-                return false;
         }
 
         private bool ValidateTax(double tax)

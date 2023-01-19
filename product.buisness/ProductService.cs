@@ -19,14 +19,14 @@ namespace production.buisness
     {
         private ApplicationContext _context;
         private AutoMapper.IMapper _mapper;
-        private readonly ProductEditValidator _editvalidator;
+        private readonly ProductEditValidator _editValidator;
         private readonly ProductAddValidator _addValidator;
 
         public ProductService(ApplicationContext context, AutoMapper.IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _editvalidator = new ProductEditValidator();
+            _editValidator = new ProductEditValidator();
             _addValidator = new ProductAddValidator();
         }
 
@@ -44,8 +44,8 @@ namespace production.buisness
             var product = _mapper.Map<Product>(productDto);
             product.CreateDate = DateTime.Now;
             _context.Products.Add(product);
-            _context.SaveChanges();
-             return true;
+            await _context.SaveChangesAsync();
+            return true;
         }
         public List<ProductDto> GetAllProducts()
         {
@@ -64,14 +64,14 @@ namespace production.buisness
         
         public async Task<bool> EditProduct(ProductEditRequest edit)
         {
-            var result = await _editvalidator.ValidateAsync(edit);
+            var result = await _editValidator.ValidateAsync(edit);
             if (result.IsValid == false)
                 return false;
 
             var product = _context.Products.FirstOrDefault(x => x.Id == edit.Id & x.IsDeleted == false);
             product.LastEditDate = DateTime.Now;
             _mapper.Map(edit, product);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return true;
         }
         public double  GetHighestPrice()

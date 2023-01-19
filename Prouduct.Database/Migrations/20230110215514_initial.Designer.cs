@@ -112,10 +112,10 @@ namespace production.Database.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("ProductDescription")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductName")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Tax")
@@ -148,7 +148,7 @@ namespace production.Database.Migrations
             modelBuilder.Entity("production.Database.entities.CompanyCountry", b =>
                 {
                     b.HasOne("Prouduction.Database.entities.Company", "Company")
-                        .WithMany("Branchs")
+                        .WithMany("Branches")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -158,7 +158,7 @@ namespace production.Database.Migrations
 
             modelBuilder.Entity("Prouduction.Database.entities.Company", b =>
                 {
-                    b.Navigation("Branchs");
+                    b.Navigation("Branches");
                 });
 
             modelBuilder.Entity("production.Database.entities.Product", b =>

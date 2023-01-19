@@ -15,7 +15,7 @@ namespace production.Database.Dtos.Companies
         public string ProductDescription { set; get; }
         public double Price { set; get; }
         public double Tax { set; get; }
-        public Colors Coulor { set; get; }
+        public Colors Color { set; get; }
         public List<int> Companies { set; get; }
     }
 }

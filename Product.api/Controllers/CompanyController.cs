@@ -49,7 +49,7 @@ namespace production.api.Controllers
         [HttpPost("Product/Edit")]
         public async Task<bool> EditCom(EditCompanyRequestDto edit)
         {
-            var s= _companyservice.EditCom(edit);
+            var s= _companyservice.EditCompany(edit);
             return await s;
         }
 

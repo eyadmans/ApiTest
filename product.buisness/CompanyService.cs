@@ -18,27 +18,27 @@ namespace production.buisness
     {
         private ApplicationContext _context;
         private AutoMapper.IMapper _mapper;
-        private readonly CompanyEditValidator _validatorCompany;
-        private readonly CompanyAddValidator _addvalidatorCompany;
+        private readonly CompanyEditValidator _editValidatorCompany;
+        private readonly CompanyAddValidator _addValidatorCompany;
 
         public CompanyService(ApplicationContext context, AutoMapper.IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _validatorCompany = new CompanyEditValidator();
-            _addvalidatorCompany = new CompanyAddValidator();
+            _editValidatorCompany = new CompanyEditValidator();
+            _addValidatorCompany = new CompanyAddValidator();
         }
 
         public async Task<bool> AddNewCompany(AddCompanyRequestDto companyDto)
         {
-            var result = await _addvalidatorCompany.ValidateAsync(companyDto);
+            var result = await _addValidatorCompany.ValidateAsync(companyDto);
             if (result.IsValid == false)
                 return false;
 
             var company = _mapper.Map<Company>(companyDto);
             company.CreateDate = DateTime.Now;
             _context.Companies.Add(company);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return true;
         }       
         public List<CompanyDto> GetAll()
@@ -56,16 +56,16 @@ namespace production.buisness
             _context.SaveChanges();
         }
         
-        public async Task<bool> EditCom(EditCompanyRequestDto edit)
+        public async Task<bool> EditCompany(EditCompanyRequestDto edit)
         {
-            var result = await _validatorCompany.ValidateAsync(edit);
+            var result = await _editValidatorCompany.ValidateAsync(edit);
             if (result.IsValid == false)
                 return false;
 
             var company = _context.Companies.FirstOrDefault(x=> x.Id==edit.Id & x.IsDeleted==false);
             company.LastEditDate = DateTime.Now;
             _mapper.Map(edit,company);
-            _context.SaveChanges() ;
+            await _context.SaveChangesAsync();
             return true;
         }
         public List<string> GetOnlyNames()

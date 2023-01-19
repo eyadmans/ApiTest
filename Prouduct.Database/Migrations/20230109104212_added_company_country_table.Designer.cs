@@ -74,7 +74,7 @@ namespace production.Database.Migrations
             modelBuilder.Entity("Product.Database.entities.CompanyCountry", b =>
                 {
                     b.HasOne("Prouduct.Database.entities.Company", "Company")
-                        .WithMany("Branchs")
+                        .WithMany("Branches")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -84,7 +84,7 @@ namespace production.Database.Migrations
 
             modelBuilder.Entity("Prouduct.Database.entities.Company", b =>
                 {
-                    b.Navigation("Branchs");
+                    b.Navigation("Branches");
                 });
 #pragma warning restore 612, 618
         }

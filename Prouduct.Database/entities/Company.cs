@@ -18,10 +18,9 @@ namespace Prouduction.Database.entities
         [StringLength(50)]
         public string OwnerName { set; get; } 
         public bool Status { set; get; }
-
         public Sectors Sector { set; get; }
         public DateTime StartDate { set; get; }
-        public List<CompanyCountry> Branchs { get; set; } = new List<CompanyCountry>();
+        public List<CompanyCountry> Branches { get; set; } = new List<CompanyCountry>();
         public List<ProductCompany> Products { get; set; } = new List<ProductCompany>();
     }
 }

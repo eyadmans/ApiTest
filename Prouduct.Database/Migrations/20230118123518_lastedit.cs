@@ -34,7 +34,7 @@ namespace production.Database.Migrations
                 newName: "IX_ProductCompanies_CompanyId");
 
             migrationBuilder.AlterColumn<string>(
-                name: "ProductName",
+                name: "Name",
                 table: "Products",
                 type: "nvarchar(100)",
                 maxLength: 100,
@@ -45,7 +45,7 @@ namespace production.Database.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "ProductDescription",
+                name: "Description",
                 table: "Products",
                 type: "nvarchar(1000)",
                 maxLength: 1000,
@@ -167,7 +167,7 @@ namespace production.Database.Migrations
                 newName: "IX_ProductCompany_CompanyId");
 
             migrationBuilder.AlterColumn<string>(
-                name: "ProductName",
+                name: "Name",
                 table: "Products",
                 type: "nvarchar(max)",
                 nullable: true,
@@ -176,7 +176,7 @@ namespace production.Database.Migrations
                 oldMaxLength: 100);
 
             migrationBuilder.AlterColumn<string>(
-                name: "ProductDescription",
+                name: "Description",
                 table: "Products",
                 type: "nvarchar(max)",
                 nullable: true,
