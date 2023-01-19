@@ -75,7 +75,7 @@ namespace production.buisness
         }
         public List<Product> GetCompanyProducts(int id)
         {
-            var productId = _context.ProductCompanies.Include(x=>Product).Where(x => x.CompanyId == id).ToList();
+            var productId = _context.ProductCompanies.Include(x=>x.Product).Where(x => x.CompanyId == id).ToList();
             var result = productId.Select(x => x.Product).ToList();
             return result;
         }
