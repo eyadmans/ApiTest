@@ -75,15 +75,15 @@ namespace production.buisness
         }
         public List<Product> GetCompanyProducts(int id)
         {
-            var productId = _context.ProductCompanies.Include(x=>x.Product).Where(x => x.CompanyId == id).ToList();
-            var result = productId.Select(x => x.Product).ToList();
+            var products = _context.ProductCompanies.Include(x=>x.Product).Where(x => x.CompanyId == id).ToList();
+            var result = products.Select(x => x.Product).ToList();
             return result;
         }
         public CompanyDto GetCompanyById (int id)
         {
-            var companies = _context.Companies.FirstOrDefault(x => x.Id == id);
-            var company = _mapper.Map<CompanyDto>(companies);
-            return company;
+            var company = _context.Companies.FirstOrDefault(x => x.Id == id);
+            var result = _mapper.Map<CompanyDto>(company);
+            return result;
         }
     }
 }

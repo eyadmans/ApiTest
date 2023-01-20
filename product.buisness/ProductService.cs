@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.EntityFrameworkCore;
 namespace production.buisness
 {
     public class ProductService
@@ -79,17 +79,17 @@ namespace production.buisness
             var mostExpensiveProduct = _context.Products.Max(x => x.Price);
             return mostExpensiveProduct;
         }
-
         public ProductDto GetProductById(int id)
         {
-            var products = _context.Products.FirstOrDefault(x => x.Id == id);
-            var product = _mapper.Map<ProductDto>(products);
-            return product;
+            var product = _context.Products.FirstOrDefault(x => x.Id == id);
+            var result = _mapper.Map<ProductDto>(product);
+            return result;
         }
         public List<Company> GetProductCompanies(int id)
         {
-            var products = _context.ProductCompanies.Where(x => x.ProductId == id).ToList();
-            var result = products.Select(x => x.Company).ToList();
+            List<Company> result = new List<Company>();
+            var companies = _context.ProductCompanies.Include(x=>x.Company).Where(x => x.ProductId == id).ToList();
+            result = companies.Select(x => x.Company).ToList();
             return result;
         }
     }
